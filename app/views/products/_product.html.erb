@@ -1,7 +1,7 @@
-<div class="product border border-primary text-center">
-<h2><%= link_to product.title, product_path(product) %></h2>
-<p><%= product.category.title %></p>
+<div class="product border border-primary">
+  <h2> <p class="text-center"><%= link_to product.title, product_path(product) %> <%= link_to (fa_icon "shopping-cart"), root_path, class: "pull-right btn btn-outline-primary" %></p></h2>
+<p ><%= product.category.title %></p>
 <p><%=h truncate(product.description, :length => 25 ) %></p>
-<%= link_to (fa_icon "shopping-cart", text: "buy"), root_path, class: "btn btn-outline-primary" %>
+<% # link_to (fa_icon "shopping-cart", text: "buy"), root_path, class: "btn btn-outline-primary" %>
 </div>
 <br>
