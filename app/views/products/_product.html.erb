@@ -1,5 +1,5 @@
 <div class="product border border-primary text-center">
-<h2><%= product.title %></h2>
+<h2><%= link_to product.title, product_path(product) %></h2>
 <p><%= product.category.title %></p>
 <p><%=h truncate(product.description, :length => 25 ) %></p>
 </div>
