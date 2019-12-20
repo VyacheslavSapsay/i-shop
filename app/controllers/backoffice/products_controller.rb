@@ -1,4 +1,5 @@
 class Backoffice::ProductsController < Backoffice::BackofficeController
+  before_action :set_product, only: %i[show edit update destroy]
 
   def index
     @products = Product.all.paginate(page: params[:page], per_page: 8)
@@ -25,6 +26,12 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   end
 
   def destroy
+    @post.destroy
+    respond_to do |format|
+      format.js { render 'destroy', status: :destroy, location: @post }
+      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   def show
@@ -32,6 +39,9 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   end
 
   private
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:title, :description)

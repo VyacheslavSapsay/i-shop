@@ -1,6 +1,6 @@
 <div class="product border border-dark">
-  <strong> <%= link_to (fa_icon "trash"), edit_admin_product_path(product), class: "pull-right btn btn-outline-danger" %><%= product.category.title %></strong>
-  <%= link_to (fa_icon "pencil"), root_path, class: "pull-right btn btn-outline-warning" %>
+  <strong> <%= link_to (fa_icon "trash"), product,  method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right btn btn-outline-danger" %><%= product.category.title %></strong>
+  <%= link_to (fa_icon "pencil"), edit_admin_product_path(product), class: "pull-right btn btn-outline-warning" %>
   <br>
   <br>
   <h2> <p class="text-center"><%= link_to product.title, admin_product_path(product) %></p></h2>
