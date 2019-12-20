@@ -1,0 +1,11 @@
+<div class="product border border-dark">
+  <strong> <%= link_to (fa_icon "trash"), edit_admin_product_path(product), class: "pull-right btn btn-outline-danger" %><%= product.category.title %></strong>
+  <%= link_to (fa_icon "pencil"), root_path, class: "pull-right btn btn-outline-warning" %>
+  <br>
+  <br>
+  <h2> <p class="text-center"><%= link_to product.title, admin_product_path(product) %></p></h2>
+  <p class="text-center"><%= product.price %>₴</p>
+<p class="text-center"><%=h truncate(product.description, :length => 50 ) %></p>
+<% # link_to (fa_icon "shopping-cart", text: "buy"), root_path, class: "btn btn-outline-primary" %>
+</div>
+<br>
