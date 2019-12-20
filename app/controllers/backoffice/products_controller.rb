@@ -26,10 +26,10 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   end
 
   def destroy
-    @post.destroy
+    @product.destroy
     respond_to do |format|
-      format.js { render 'destroy', status: :destroy, location: @post }
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.js { render 'destroy', status: :destroy, location: @product }
+      format.html { redirect_to admin_products_path, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
