@@ -1,5 +1,6 @@
 class Backoffice::ProductsController < Backoffice::BackofficeController
   before_action :set_product, only: %i[show edit update destroy]
+  before_action :admin?
 
   def index
     @products = Product.all.paginate(page: params[:page], per_page: 8)
@@ -46,6 +47,12 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
 
   def show
     @product = Product.find(params[:id])
+  end
+
+  def admin?
+    unless current_user&.admin
+      redirect_to root_path
+    end
   end
 
   private
