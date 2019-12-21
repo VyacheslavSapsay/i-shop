@@ -23,7 +23,17 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   end
 
   def edit
-    @product = Product.find(params[:id])
+
+  end
+
+
+  def update
+    if @product.update_attributes(product_params)
+      redirect_to admin: @product
+      flash[:notice] = 'Product has been edited'
+    else
+      format.html { render :edit }
+    end
   end
 
   def destroy
@@ -44,6 +54,6 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   end
 
   def product_params
-    params.require(:product).permit(:title, :description, :category_id)
+    params.require(:product).permit(:title, :description, :category_id, :price)
   end
 end
