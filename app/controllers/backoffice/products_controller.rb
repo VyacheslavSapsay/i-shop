@@ -4,6 +4,12 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
 
   def index
     @products = Product.all.paginate(page: params[:page], per_page: 8)
+    #search below, no finished
+    #@products = if params[:search]
+    #       Product.search(params[:search]).order('created_at DESC')
+    #     else
+    #       Product.all.order('created_at DESC')
+    #     end
   end
 
   def new
