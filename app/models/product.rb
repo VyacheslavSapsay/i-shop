@@ -3,7 +3,4 @@ class Product < ApplicationRecord
   validates :description, presence: true
   belongs_to :category
 
-  def self.search(search)
-  where('title ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%")
-  end
 end
