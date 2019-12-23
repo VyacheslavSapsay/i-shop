@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text-center"><%= @product.title %></h1>
   <% @product.images.each do |image| %>
-    <%= image_tag(image.url(:large)) %>
+    <%= image_tag(image.url(:large), class: "rounded mx-auto d-block")%>
   <% end %>
 
   <% # image_tag @product.images.url(:large), class: "img-show" if @product.images? %>

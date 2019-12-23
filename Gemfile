@@ -6,6 +6,7 @@ gem 'sorcery'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem "font-awesome-rails"
+gem 'font_awesome5_rails'
 gem 'bootstrap-will_paginate'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2'
