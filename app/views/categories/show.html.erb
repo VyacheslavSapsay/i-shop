@@ -1,0 +1,6 @@
+<div class="container">
+  <% @category.products.each do |product| %>
+  <%= link_to product.title, product_path(product) %>
+  <br>
+<% end %>
+</div>
