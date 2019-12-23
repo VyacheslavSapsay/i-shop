@@ -31,6 +31,10 @@
       <%= form.text_field :price, class: "form-control", type: "number"%>
   </div>
 
+  <div class="field">
+    <%= form.file_field :images, :html =>  { :multipart => true }, multiple: true%>
+  </div>
+
   <br>
   <div class="text-center actions">
     <%= form.submit 'Submit', class: "btn btn-dark" %>

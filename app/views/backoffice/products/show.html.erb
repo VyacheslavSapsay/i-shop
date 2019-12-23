@@ -1,5 +1,6 @@
 <div class="container">
   <h1 class="text-center"><%= @product.title %></h1>
+  <%= image_tag @product.images, class: "img-show" if @product.images? %>
   <p><%= @product.description %></p>
   <%= @product.price %> ₴
   <%= link_to (fa_icon "shopping-cart", text: "buy"), product_path(@product), class: "btn btn-outline-primary" %>
