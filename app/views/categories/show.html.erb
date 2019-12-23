@@ -1,6 +1,16 @@
 <div class="container">
+    <h1>Products in category "<%= @category.title %>"</h1>
   <% @category.products.each do |product| %>
-  <%= link_to product.title, product_path(product) %>
+  <div class="product border border-primary">
+    <strong> <%= link_to (fa_icon "cart-plus"), root_path, class: "pull-right btn btn-outline-primary" %><%= product.category.title %></strong>
+    <br>
+    <br>
+    <h2> <p class="text-center"><%= link_to product.title, product_path(product) %></p></h2>
+    <p class="text-center"><%= product.price %>₴</p>
+  <p class="text-center"><%=h truncate(product.description, :length => 50 ) %></p>
+  <% # link_to (fa_icon "shopping-cart", text: "buy"), root_path, class: "btn btn-outline-primary" %>
+  </div>
   <br>
+
 <% end %>
 </div>
