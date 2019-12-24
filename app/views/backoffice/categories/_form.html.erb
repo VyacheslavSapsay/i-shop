@@ -22,6 +22,33 @@
     <%= form.text_area :description, class: "form-control"%>
   </div>
 
+  <div class="field">
+    <%= form.file_field :image, :html =>  { :multipart => true }, class: "file"%>
+  </div>
+  <div class="upload-preview">
+    <img />
+</div>
+
+<script>
+  document.querySelector('.file').addEventListener('change', event => {
+    [...event.target.files].forEach(file => {
+      const url = URL.createObjectURL(file)
+
+      addImageToBody(url)
+    })
+  })
+
+  // Добавляет картинку <img> в <body>
+  function addImageToBody (src) {
+    const img = document.createElement('img')
+    img.src = src
+    img.className = 'my-img'
+
+    document.body.appendChild(img)
+  }
+
+
+</script>
   <br>
   <div class="text-center actions">
     <%= form.submit 'Submit', class: "btn btn-dark" %>

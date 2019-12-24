@@ -1,5 +1,5 @@
 class Backoffice::CategoriesController < Backoffice::BackofficeController
-  before_action :set_product, only: %i[show edit update destroy]
+  before_action :set_category, only: %i[show edit update destroy]
   before_action :admin?
 
   def index
@@ -17,7 +17,8 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
     @category = Category.new(category_params)
     respond_to do |format|
     if @category.save
-        format.html { redirect_to @category, url: admin_products_path, notice: 'Category was successfully created.' }
+        flash[:success] = 'Category was successfully created.'
+        format.html { redirect_to @category, url: admin_products_path }
         format.json { render :show, status: :created, location: @category }
     else
         format.html { render :new }
@@ -29,7 +30,7 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
   def update
     if @category.update_attributes(category_params)
       redirect_to admin: @category
-      flash[:notice] = 'Category has been edited'
+      flash[:success] = 'Category has been edited'
     else
       format.html { render :edit }
     end
@@ -42,7 +43,8 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_products_path, notice: 'Category was successfully destroyed.' }
+      flash[:warning] = 'Category was successfully destroyed.'
+      format.html { redirect_to admin_products_path }
       format.json { head :no_content }
     end
   end
@@ -60,6 +62,6 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
   end
 
   def category_params
-    params.require(:category).permit(:title, :description)
+    params.require(:category).permit(:title, :description, :image)
   end
 end
