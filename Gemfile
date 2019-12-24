@@ -5,6 +5,7 @@ ruby '2.6.3'
 gem 'sorcery'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
+gem 'slim'
 gem "font-awesome-rails"
 gem 'font_awesome5_rails'
 gem 'bootstrap-will_paginate'

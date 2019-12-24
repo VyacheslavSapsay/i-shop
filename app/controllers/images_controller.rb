@@ -10,13 +10,13 @@ class ImagesController < ApplicationController
   def destroy
     remove_image_at_index(params[:id].to_i)
     flash[:error] = "Failed deleting image" unless @product.save
-    redirect_back(fallback_location: root_path)
+    redirect_to :back
   end
 
   private
 
   def set_product
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:id])
   end
 
   def add_more_images(new_images)
