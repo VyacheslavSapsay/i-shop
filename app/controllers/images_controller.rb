@@ -1,28 +1,28 @@
 class ImagesController < ApplicationController
   before_action :set_product
 
-  #def create
-  #  add_more_images(images_params[:images]))
-  #  flash[:error] = "Failed uploading images" unless @product.save
-  #  redirect_to :back
-  #end
+#  def create
+#    add_more_images(images_params[:images])
+#    flash[:error] = "Failed uploading images" unless @product.save
+#    redirect_to :back
+#  end
 
   def destroy
     remove_image_at_index(params[:id].to_i)
     flash[:error] = "Failed deleting image" unless @product.save
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:product_id])
   end
 
   def add_more_images(new_images)
-    images = @product.images # copy the old images
-    images += new_images # concat old images with new ones
-    @product.images = images # assign back
+    images = @product.images
+    images += new_images
+    @product.images = images
   end
 
   def remove_image_at_index(index)
