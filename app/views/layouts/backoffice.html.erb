@@ -39,6 +39,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to (fa_icon "plus-circle", text: "New product"), new_admin_product_path, class: "dropdown-item" %>
             <%= link_to (fa_icon "plus-circle", text: "New category"), new_admin_category_path, class: "dropdown-item" %>
+            <%= link_to (fa_icon "edit", text: "Edit category"), choose_category_admin_categories_path, class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>

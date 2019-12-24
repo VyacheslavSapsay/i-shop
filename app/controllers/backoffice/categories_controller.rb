@@ -36,7 +36,7 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
     end
   end
 
-  def show
+  def edit
 
   end
 
@@ -53,6 +53,10 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
     unless current_user&.admin
       redirect_to root_path
     end
+  end
+
+  def choose_category
+    @categories = Category.order(:title)
   end
 
   private

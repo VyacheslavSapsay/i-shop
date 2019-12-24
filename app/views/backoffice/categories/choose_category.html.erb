@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Choose Categories</h1>
+  <% @categories.each do |category| %>
+    <%= link_to category.title, edit_admin_category_path(category) %>
+    <br>
+  <% end %>
+</div>

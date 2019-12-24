@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :categories
 
   scope '/admin' do
-    resources :categories, controller: 'backoffice/categories', as: "admin_categories"
+    resources :categories, controller: 'backoffice/categories', as: "admin_categories" do
+      collection do
+        get 'choose_category'
+      end
+    end
     resources :products, controller: 'backoffice/products', as: "admin_products"
   end
 
