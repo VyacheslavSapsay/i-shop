@@ -8,6 +8,7 @@ gem "mini_magick"
 gem "font-awesome-rails"
 gem 'font_awesome5_rails'
 gem 'bootstrap-will_paginate'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2'
 # Use pg as the database for Active Record
