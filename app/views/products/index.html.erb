@@ -9,17 +9,11 @@
             <% n=+1 %>
             <% break if n > 0 %>
           <% end %>
-              <div class="cart_title">
+              <div class="product_title text-center">
                 <b><%= product.title%></b>
-              </div>
-            <div class="row cart_price">
-              <div class="col">
-                <h5><%= product.price %> ₴</h5>
-              </div>
-              <div class="col">
+                <p><%= product.price %> ₴</p>
                 <%= link_to (fa_icon "cart-plus", text: "Buy"), product_path(product), class: "btn btn-outline-primary" %>
               </div>
-            </div>
           <% end %>
 
         </div>

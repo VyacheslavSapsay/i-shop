@@ -4,7 +4,9 @@ class SessionsController < ApplicationController
 
   def create
     user = login(params[:email], params[:password])
-    if user
+    if user.admin?
+      redirect_to admin_products_path
+    elsif user
       redirect_back_or_to root_path
       flash[:success] = 'Logged in!'
     else
