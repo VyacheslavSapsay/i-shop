@@ -3,7 +3,7 @@
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div class="alert alert-danger">
-      <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this author from being saved:</h2>
 
       <ul>
         <% user.errors.full_messages.each do |message| %>
