@@ -20,7 +20,8 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
     @product = Product.new(product_params)
     respond_to do |format|
     if @product.save
-        format.html { redirect_to @product, url: admin_products_path, notice: 'Product was successfully created.' }
+      flash[:success] = 'Product was successfully created.'
+        format.html { redirect_to admin_product_path(@product)}
         format.json { render :show, status: :created, location: @product }
     else
         format.html { render :new }

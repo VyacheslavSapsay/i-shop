@@ -1,5 +1,7 @@
 <div class="container">
   <h1 class="text-center"><%= @product.title %></h1>
+    <%= link_to (fa_icon "trash", text: "Delete"), admin_product_path(@product),  method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right btn btn-danger" %> <span class="pull-right">&nbsp;&nbsp;</span>
+    <%= link_to (fa_icon "pencil", text: "Edit"), edit_admin_product_path(@product), class: "btn btn-warning pull-right" %>
   <% @product.images.each do |image| %>
     <%= image_tag(image.url(:medium), class: "rounded mx-auto d-block")%>
   <% end %>
