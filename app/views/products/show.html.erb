@@ -1,27 +1,33 @@
 <div class="container">
   <h1 class="text-center"><%= @product.title %></h1>
   <div>
-<!--       за две ночи дошло..сон для слабаков!-->
-    <% @product.images.each_with_index do |image, index| %>
-      <%= image_tag(image.url(:medium), id: index, class: 'image') %>
-        <script type="text/javascript" charset="utf-8">
-            $("#<%= index %>").click(function(){	// Событие клика на маленькое изображение
-                var img = $(this);	// Получаем изображение, на которое кликнули
-                var src = img.attr('src'); // Достаем из этого изображения путь до картинки
-                $("body").append("<div class='popup'>"+ //Добавляем в тело документа разметку всплывающего окна
-                    "<div class='popup_bg'></div>"+ // Блок, который будет служить фоном затемненным
-                    "<img src='<%= image %>' class='popup_img'  />"+ // Само увеличенное фото
-                    "</div>");
-                $(".popup").fadeIn(200); // Медленно выводим изображение
-                $(".popup_bg").click(function(){	// Событие клика на затемненный фон
-                    $(".popup").fadeOut(200);	// Медленно убираем всплывающее окн
-                    setTimeout(function() {	// Выставляем таймер
-                        $(".popup").remove(); // Удаляем разметку всплывающего окна
-                    }, 200);
-                });
-            });
-        </script>
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner col-md-12">
+    <% if @product.images? %>
+      <% @product.images.each_with_index do |image, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>" data-interval="5000">
+          <%= image_tag(image.url(), id: index, class: 'd-block w-100 carousel-image') %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="carousel-item active">
+        <img src="https://picua.org/images/2019/12/27/31783d15d36cb0de20e5556443e01916.jpg" class="d-block w-100 carousel-image">
+      </div>
+      <div class="carousel-item">
+        <img src="https://picua.org/images/2019/12/27/31783d15d36cb0de20e5556443e01916.jpg" class="d-block w-100 carousel-image">
+      </div>
     <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
   </div>
 
   <% # image_tag @product.images.url(:large), class: "img-show" if @product.images? %>
