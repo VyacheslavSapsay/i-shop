@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'products#index'
   resources :products do
-    resources :images, :only => [:create, :destroy]
+    resources :images
   end
 
   resources :categories
