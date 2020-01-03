@@ -23,7 +23,7 @@
   </div>
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, class: "form-control"%>
+    <%= form.rich_text_area :description, class: "editor"%>
   </div>
 
   <div class="field">
@@ -43,7 +43,7 @@
   <div class="col">
     <%= image_tag(image.url(:thumb), class: "rounded mx-auto d-block product-image")%>
     <div class="text-center">
-        <%= link_to (fa_icon "trash", text: "Delete"), product_image_path(@product, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?"}, class: "btn btn-outline-danger"%>
+          <%= link_to (fa_icon "trash", text: "Delete"), product_image_path(@product, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?"}, class: "btn btn-outline-danger"%>
     </div>
         </div>
   <% end %>

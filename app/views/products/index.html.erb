@@ -1,7 +1,7 @@
   <h3 class="row justify-content-center mt-1 products">Products:</h3>
   <div class="row">
     <% @products.each do |product| %>
-      <div class="col-lg-4 col-xl-4 col-md-6 col">
+      <div class="col-lg-4 col-xl-4 col-md-4 col">
         <div class="mb-5">
           <%= link_to product, class:"product_title" do %>
           <%product.images.each do |image, n| %>

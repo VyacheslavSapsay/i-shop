@@ -5,7 +5,7 @@
   <br>
   <h2> <p class="text-center"><%= link_to product.title, admin_product_path(product) %></p></h2>
   <p class="text-center"><%= product.price %>₴</p>
-<p class="text-center"><%=h truncate(product.description, :length => 50 ) %></p>
+<p class="text-center"><%=product.description%></p>
 <% # link_to (fa_icon "shopping-cart", text: "buy"), root_path, class: "btn btn-outline-primary" %>
 </div>
 <br>

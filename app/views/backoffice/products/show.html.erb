@@ -5,7 +5,8 @@
   <% @product.images.each do |image| %>
     <%= image_tag(image.url(:medium), class: "rounded mx-auto d-block")%>
   <% end %>
-  <p><%= @product.description %></p>
+  <%= @product.description %>
+  <br>
   <%= @product.price %> ₴
   <%= link_to (fa_icon "shopping-cart", text: "buy"), product_path(@product), class: "btn btn-outline-primary" %>
 </div>

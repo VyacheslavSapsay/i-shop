@@ -32,7 +32,7 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   def update
     if @product.update_attributes(product_params)
       redirect_to admin: @product
-      flash[:notice] = 'Product has been edited'
+      flash[:success] = 'Product has been edited'
     else
       format.html { render :edit }
     end
