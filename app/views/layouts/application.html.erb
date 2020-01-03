@@ -4,7 +4,6 @@
     <title>IShop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <SCRIPT type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></SCRIPT>
 
     <%= stylesheet_pack_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,6 +11,12 @@
   </head>
 
   <body>
+    <div class="banner">
+        <div class="banner-text">
+             <strong>SsPay</strong>
+        </div>
+    </div>
+</div>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <%= link_to (fa_icon "heart", text: "I-Shop"), root_path, class: "navbar-brand" %>
@@ -65,5 +70,6 @@
     <div class="main-main container">
           <%= yield %>
     </div>
+
   </body>
 </html>

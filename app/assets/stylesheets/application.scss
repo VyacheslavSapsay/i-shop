@@ -22,3 +22,32 @@
    border-radius: 5px;
    margin: 0 10px;
  }
+.path {
+  align-items: center;
+  display: flex;
+  padding-top: 4px;
+}
+.banner {
+  left: 0px;
+  position: absolute;
+  top: 0px;
+
+  height: 100px;
+  width: 100px;
+
+  overflow: hidden;
+}
+.banner-text {
+  left: -64px;
+  position: absolute;
+  top: 32px;
+
+  height: 24px;
+  width: 206px;
+
+  transform: rotate(-45deg);
+
+  background-color: #4287f5;
+
+  text-align: center;
+}

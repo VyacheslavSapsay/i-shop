@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="path">
+    <%= link_to "Products", products_path %>
+    <div style="margin: 0 8px;">/</div>
+    <%= link_to @product.category.title, categories_path %>
+</div>
   <h1 class="text-center"><%= @product.title %></h1>
   <div>
 
