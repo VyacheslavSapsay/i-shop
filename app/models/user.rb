@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   validate :pass_val
+  validates :email, uniqueness: true, presence: true
   validates :password, presence: true,
                       length: { minimum: 8 }
   attr_accessor :password, :password_confirmation

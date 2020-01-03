@@ -27,30 +27,29 @@
         <li class="nav-item">
           <%= link_to (fa_icon "shopping-cart", text: "Cart"), root_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<%= admin_products_url %>">Admin</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <form class="form-inline">
-            <%= form_tag(products_path, method: "get", id: "search-form") do %>
+        <li class="nav-item mx-auto order-0">
+          <div class="form-inline mx-auto order-0">
+            <%= form_tag(products_path, method: "get", id: "search-form mx-auto") do %>
               <%= text_field_tag :search, params[:search], placeholder: "Search", class:'form-control mr-sm-2' %>
               <button type="submit" class="search-nav btn btn-primary"><i class="fa fa-search"></i></button>
             <% end %>
-          </form>
+          </div>
         </li>
       </ul>
 
       <% if current_user %>
-      <span class="text-light"><%= fa_icon "user" %><%= current_user.email %>&nbsp;</span>
-        <%= link_to 'Log out', logout_path, class: "btn btn-outline-dark my-2 my-lg-0"%>
+      <div class="dropdown">
+        <button class="btn btn-outline-dark dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.email %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% if current_user.admin %>
+           <%= link_to (fa_icon "exchange", text: "Admin Side"), admin_products_path, class: "dropdown-item" %>
+          <% end %>
+          <%= link_to 'Log out', logout_path, class: "btn btn-outline-dark my-2 my-lg-0 dropdown-item"%>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
       <% else %>
         <%= link_to 'Sign Up', signup_path, class: "btn btn-primary my-2 my-lg-0" %>
         <%= link_to 'Log in', login_path, class: "btn btn-outline-light my-2 my-lg-0" %>

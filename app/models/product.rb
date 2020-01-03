@@ -4,4 +4,9 @@ class Product < ApplicationRecord
   validates :description, presence: true
   belongs_to :category
   has_rich_text :description
+
+  scope :cheapest, -> { order("price ASC") }
+  scope :expensive, -> { order("price DESC") }
+  scope :newest, -> { order("created_at DESC") }
+  scope :oldest, -> { order("created_at ASC") }
 end
