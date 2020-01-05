@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    models:
+      product: 'Продукт'
+    attributes:
+      product:
+        title: 'Название'
+        description: 'Описание'
+        category: "Категория"
+        price: "Цена"
