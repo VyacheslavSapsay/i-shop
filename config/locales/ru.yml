@@ -1,2 +1,4 @@
 ru:
   hello: 'Privet'
+  new:
+    random_product: "Случайный продукт"
