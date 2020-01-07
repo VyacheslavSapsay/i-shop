@@ -14,7 +14,8 @@
 
   <div class="field">
     <%= form.label :category %>
-    <%= form.collection_select(:category_id, Category.all, :id, :title, class:'form-control' ) %>
+    <br>
+    <%= form.collection_check_boxes :category_ids, Category.all, :id, :title, class:'form-control' %>
   </div>
 
   <div class="field">
