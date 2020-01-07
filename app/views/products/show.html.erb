@@ -1,9 +1,9 @@
 <div class="container">
   <div class="path">
     <%= link_to "Products", products_path %>
-    <div style="margin: 0 8px;">/</div>
+    <div class="breadcrumbs separator">/</div>
     <% @product.categories.each do |category| %>
-      <%= link_to category.title, categories_path %>
+      <%= link_to category.title, categories_path %> <span class="breadcrumbs separator">/</span>
     <% end %>
 </div>
   <h1 class="text-center"><%= @product.title %></h1>
