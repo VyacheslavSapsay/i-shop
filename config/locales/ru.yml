@@ -1,4 +1,34 @@
 ru:
-  hello: 'Privet'
-  new:
+  navbar:
+    cart: "Корзина"
+    search: "Поиск"
+    user_actions:
+      sign_up: "Регистрация"
+      log_in: "Войти"
+      admin_side: "Администрирование"
+      log_out: "Выйти"
+    admin_actions_toggle: "Действия"
+    admin_actions:
+      new_product: "Создать продукт"
+      new_category: "Создать Категорию"
+      edit_category: "Редактировать категорию"
+      client_side: "Переключиться на сторону пользователя"
+  category:
+    products_in_category: "Продукты в категории"
+  general:
+    categories: "Категории"
+    buy: "Купить"
+  product:
+    products: "Продукты"
     random_product: "Случайный продукт"
+    sort:
+        sort: "Сортировка"
+        expensive: "От дорогих"
+        cheapest: "От дешевых"
+        newest: "Новейшие"
+        oldest: "Старые"
+  session:
+    enter_email: "Введите эмейл"
+    enter_password: "Введите пароль"
+    confirm_password: "Подтвердите пароль"
+    create_user: "Создать пользователя"

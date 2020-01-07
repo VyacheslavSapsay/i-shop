@@ -30,4 +30,36 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  navbar:
+    cart: "Cart"
+    search: "Search"
+    user_actions:
+      sign_up: "Sign Up"
+      log_in: "Log In"
+      admin_side: "Go To Admin Side"
+      log_out: "Log out"
+    admin_actions_toggle: "Actions"
+    admin_actions:
+      new_product: "New product"
+      new_category: "New category"
+      edit_category: "Edit category"
+      client_side: "Go to client side"
+  category:
+    products_in_category: "Products in category"
+  general:
+    categories: "Categories"
+    buy: "Buy"
+  product:
+    products: "Products"
+    random_product: "Random product"
+    sort:
+        sort: "Sort"
+        expensive: "Expensive"
+        cheapest: "Cheapest"
+        newest: "Newest"
+        oldest: "Oldest"
+  session:
+    enter_email: "Enter email"
+    enter_password: "Enter password"
+    confirm_password: "Confirm password"
+    create_user: "Create user"

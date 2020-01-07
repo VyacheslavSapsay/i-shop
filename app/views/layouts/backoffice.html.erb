@@ -22,34 +22,34 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <%= link_to (fa_icon "list", text: "Categories"), admin_categories_path, class: "nav-link" %>
+          <%= link_to (fa_icon "list", text: ( t "general.categories")), admin_categories_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <%= link_to "Search", admin_products_path, class: "btn btn-primary my-2 my-sm-0" %>
+            <input class="form-control mr-sm-2" type="search" placeholder=<%= t "navbar.search" %> aria-label="Search">
+            <%= link_to (t "navbar.search"), admin_products_path, class: "btn btn-primary my-2 my-sm-0" %>
           </form>
         </li>
       </ul>
       <% if current_user %>
       <li class="dropdown btn btn-outline-primary">
         <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Actions
+          <%= t("navbar.admin_actions_toggle") %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to (fa_icon "plus-circle", text: "New product"), new_admin_product_path, class: "dropdown-item" %>
-            <%= link_to (fa_icon "plus-circle", text: "New category"), new_admin_category_path, class: "dropdown-item" %>
-            <%= link_to (fa_icon "edit", text: "Edit category"), choose_category_admin_categories_path, class: "dropdown-item" %>
+            <%= link_to (fa_icon "plus-circle", text: (t "navbar.admin_actions.new_product")), new_admin_product_path, class: "dropdown-item" %>
+            <%= link_to (fa_icon "plus-circle", text: (t "navbar.admin_actions.new_category")), new_admin_category_path, class: "dropdown-item" %>
+            <%= link_to (fa_icon "edit", text: (t "navbar.admin_actions.edit_category")), choose_category_admin_categories_path, class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
-          <%= link_to (fa_icon "exchange", text: "Go to client side"), root_path, class: "dropdown-item" %>
+          <%= link_to (fa_icon "exchange", text: (t "navbar.admin_actions.client_side")), root_path, class: "dropdown-item" %>
         </div>
       </li>
       &nbsp;&nbsp;
       <span class="text-light"><%= fa_icon "user" %> <%= current_user.email %>&nbsp;</span>
-        <%= link_to 'Log out', logout_path, class: "btn btn-primary my-2 my-lg-0 log-out"%>
+        <%= link_to (t 'navbar.user_actions.log_out'), logout_path, class: "btn btn-primary my-2 my-lg-0 log-out"%>
       <% else %>
-        <%= link_to 'Sign Up', signup_path, class: "btn btn-primary my-2 my-lg-0" %>
-        <%= link_to 'Log in', login_path, class: "btn btn-primary my-2 my-lg-0" %>
+        <%= link_to (t 'navbar.user_actions.sign_up'), signup_path, class: "btn btn-primary my-2 my-lg-0" %>
+        <%= link_to (t 'navbar.user_actions.log_in'), login_path, class: "btn btn-primary my-2 my-lg-0" %>
       <% end %>
     </div>
   </nav>
@@ -60,6 +60,10 @@
       <% end %>
     </div>
     <div class="main-main container">
+      <ul>
+  <li><%= link_to 'English', admin_products_path(locale: :en) %></li>
+  <li><%= link_to 'Русский', admin_products_path(locale: :ru) %></li>
+</ul>
           <%= yield %>
     </div>
   </body>

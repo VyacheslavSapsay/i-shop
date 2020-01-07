@@ -7,7 +7,7 @@ class CreateProductCategories < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    change_column :products, :category_id, :bigint, :null => true
+    change_column :products, :category_id, :bigint
 
   end
 

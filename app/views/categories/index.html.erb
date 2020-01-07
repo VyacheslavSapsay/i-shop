@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Categories</h1>
+  <h1><%= t ("general.categories") %></h1>
   <% @categories.each do |category| %>
     <%= link_to category.title, category_path(category) %>&nbsp;<span>(<%= category.products.count %>)</span>
     <br>

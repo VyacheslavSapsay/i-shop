@@ -1,14 +1,14 @@
   <h3 class="row justify-content-center mt-1 products">Products:</h3>
-  <%= link_to I18n.t("new.random_product"), product_path(@random_product), class: "btn btn-outline-primary" %>
+  <%= link_to t("product.random_product"), product_path(@random_product), class: "btn btn-outline-primary" %>
   <div class="dropdown pull-right">
   <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <%= fa_icon "sort" %> Sort
+    <%= fa_icon "product.sort.sort" %> <%= t "sort" %>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%= link_to "Expensive", products_path(sort: 'expensive'), class: "dropdown-item" %>
-    <%= link_to "Cheapest", products_path(sort: 'cheapest'), class: "dropdown-item" %>
-    <%= link_to "Newest", products_path(sort: 'newest'), class: "dropdown-item" %>
-    <%= link_to "Oldest", products_path(sort: 'oldest'), class: "dropdown-item" %>
+    <%= link_to (t "product.sort.expensive"), products_path(sort: 'expensive'), class: "dropdown-item" %>
+    <%= link_to (t "product.sort.cheapest"), products_path(sort: 'cheapest'), class: "dropdown-item" %>
+    <%= link_to (t "product.sort.newest"), products_path(sort: 'newest'), class: "dropdown-item" %>
+    <%= link_to (t "product.sort.oldest"), products_path(sort: 'oldest'), class: "dropdown-item" %>
   </div>
 </div>
   <div class="row">
@@ -24,7 +24,7 @@
               <div class="product_title text-center">
                 <b><%= product.title%></b>
                 <p><%= product.price %> ₴</p>
-                <%= link_to (fa_icon "cart-plus", text: "Buy"), product_path(product), class: "btn btn-outline-primary" %>
+                <%= link_to (fa_icon "cart-plus", text: (t "general.buy")), product_path(product), class: "btn btn-outline-primary" %>
               </div>
           <% end %>
 

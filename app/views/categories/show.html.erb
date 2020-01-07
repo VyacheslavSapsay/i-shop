@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Products in category "<%= @category.title %>"</h1>
+    <h1><%= t "category.products_in_category"  %>: "<%= @category.title %>"</h1>
     <div class="row">
       <div class="row">
         <% @category.products.each do |product| %>
@@ -14,7 +14,7 @@
                   <div class="product_title text-center">
                     <b><%= product.title%></b>
                     <p><%= product.price %> ₴</p>
-                    <%= link_to (fa_icon "cart-plus", text: "Buy"), product_path(product), class: "btn btn-outline-primary" %>
+                    <%= link_to (fa_icon "cart-plus", text: (t "general.buy")), product_path(product), class: "btn btn-outline-primary" %>
                   </div>
               <% end %>
 

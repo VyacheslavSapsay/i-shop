@@ -6,7 +6,6 @@
   <p class="text-center"><%= product.price %>₴</p>
   <%= image_tag product.images.first.url(:thumb) %>
   <% end %>
-<p class="text-center"><%=h truncate(product.description, :length => 50 ) %></p>
 <% # link_to (fa_icon "shopping-cart", text: "buy"), root_path, class: "btn btn-outline-primary" %>
 </div>
 <br>
