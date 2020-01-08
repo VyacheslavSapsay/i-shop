@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
+gem 'flag-icons-rails'
 gem 'sorcery'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"

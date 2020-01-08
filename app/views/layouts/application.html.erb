@@ -67,10 +67,21 @@
       <% end %>
     </div>
     <div class="main-main container">
-      <ul>
-  <li><%= link_to 'English', root_path(locale: :en) %></li>
-  <li><%= link_to 'Русский', root_path(locale: :ru) %></li>
-</ul>
+      <div class="dropdown">
+        <button class="btn btn-outline-info btn-sm pull-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Language
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%= link_to url_for(locale: 'en'), class: 'dropdown-item' do %>
+            <%= flag_icon(:eu) %>
+            English
+          <% end %>
+          <%= link_to url_for(locale: 'ru'), class: 'dropdown-item' do %>
+            <%= flag_icon(:ru) %>
+            Русский
+          <% end %>
+        </div>
+      </div>
           <%= yield %>
     </div>
 
