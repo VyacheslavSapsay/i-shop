@@ -179,6 +179,8 @@ GEM
       ffi (~> 1.9)
     ruby_dep (1.5.0)
     rubyzip (2.0.0)
+    russian (0.6.0)
+      i18n (>= 0.5.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -241,6 +243,8 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
     will_paginate (3.2.1)
+    wysiwyg-rails (3.0.6)
+      railties (>= 3.2, < 7.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.2.2)
@@ -263,6 +267,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.2)
+  russian (~> 0.6.0)
   sass-rails (>= 6)
   selenium-webdriver
   slim
@@ -274,6 +279,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  wysiwyg-rails
 
 RUBY VERSION
    ruby 2.6.3p62

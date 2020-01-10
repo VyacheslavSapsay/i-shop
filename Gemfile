@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 gem 'flag-icons-rails'
+gem "wysiwyg-rails"
+gem 'russian', '~> 0.6.0'
 gem 'sorcery'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
