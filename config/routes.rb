@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/, defaults: {locale: "en"} do
     root 'products#index'
     resources :products do
+      resources :comments
       resources :images
     end
 
@@ -16,11 +17,11 @@ Rails.application.routes.draw do
       resources :products, controller: 'backoffice/products', as: "admin_products"
     end
 
-    resources :users
-    resources :sessions
+      resources :users
+      resources :sessions
 
-    get 'signup', to: 'users#new', as: 'signup'
-    get 'login', to: 'sessions#new', as: 'login'
-    get 'logout', to: 'sessions#destroy', as: 'logout'
-  end
+      get 'signup', to: 'users#new', as: 'signup'
+      get 'login', to: 'sessions#new', as: 'login'
+      get 'logout', to: 'sessions#destroy', as: 'logout'
+    end
 end

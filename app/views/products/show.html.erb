@@ -40,4 +40,8 @@
   <% # image_tag @product.images.url(:large), class: "img-show" if @product.images? %>
   <p><%= @product.description %></p>
   <%= link_to (fa_icon "shopping-cart", text: "buy"), product_path(@product), class: "btn btn-outline-primary" %>
+  <br>
+  <%= render @product.comments %>
+  <br>
+  <%= render 'comments/form' %>
 </div>

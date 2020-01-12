@@ -1,0 +1,12 @@
+<hr>
+  <div class="comment<%= comment.id %>">
+    <p><strong><%= comment.user.email %></strong>:<%= comment.comment %></p>
+    <% if comment.user == current_user  %>
+      <p>
+      <%= link_to 'Destroy', [comment.product, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+      </p>
+    <% end %>
+      <br>
+  </div>
