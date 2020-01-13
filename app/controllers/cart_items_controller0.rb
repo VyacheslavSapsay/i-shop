@@ -1,4 +1,6 @@
 class CartItemsController < ApplicationController
+before_action :set_cart
+before_action :set_cart_item, only: %i[destroy]
 
   def create
     if CartItem.find_by(product_id: params[:product_id]).present?
@@ -18,4 +20,3 @@ class CartItemsController < ApplicationController
       end
     end
   end
-end
