@@ -1,15 +1,19 @@
 class CartItemsController < ApplicationController
-  def new
-    @cart_item = CartItem.new
-  end
+
+
   def create
-  @cart_item = current_user.cart.cart_items.new(cart_item_params)
-      if @cart_item.save!
-        redirect_to @cart
-        flash[:success] = 'Product added'
+      @cart_item =  CartItem.new
+      @cart_item.cart_id = current_user.cart.id
+      @cart_item.product_id = params[:product_id]
+      if @cart_item.save
+        redirect_back(fallback_location: root_path)
+        flash[:success] = "item added"
       else
-        redirect_to @cart
-        flash[:danger] = @cart.errors.full_messages.first
+        redirect_back(fallback_location: root_path)
+        flash[:danger] = @cart_item.errors.full_messages.first
+      end
     end
-end
+
+    private
+
 end
