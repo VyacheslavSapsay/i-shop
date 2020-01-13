@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cart_items
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/, defaults: {locale: "en"} do
     root 'products#index'
     resources :products do

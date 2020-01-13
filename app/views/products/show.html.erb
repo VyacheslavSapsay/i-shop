@@ -36,12 +36,16 @@
   </a>
 </div>
   </div>
-
   <% # image_tag @product.images.url(:large), class: "img-show" if @product.images? %>
   <p><%= @product.description %></p>
-  <%= link_to (fa_icon "shopping-cart", text: "buy"), product_path(@product), class: "btn btn-outline-primary" %>
+  <%= link_to (fa_icon "shopping-cart", text: "buy"), new_cart_item_path(@product), class: "btn btn-outline-primary" %>
+    <strong class="product-rating pull-right"><%= average_product_rating(@product)%><%= fa_icon "star"  %></strong>
   <br>
   <%= render @product.comments %>
   <br>
-  <%= render 'comments/form' %>
+  <% if current_user %>
+    <%= render 'comments/form' %>
+  <% else %>
+    <p><strong>Sign in or register to leave comments</strong></p>
+  <% end %>
 </div>
