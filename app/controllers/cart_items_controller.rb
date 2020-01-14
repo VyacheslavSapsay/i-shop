@@ -3,19 +3,13 @@ class CartItemsController < ApplicationController
   def create
     if CartItem.find_by(product_id: params[:product_id]).present?
       @cart_item = CartItem.find_by(product_id: params[:product_id])
-      @cart_item.quantity += 1
+      @cart_item.update(quantity: @cart_item.quantity += 1)
+      flash[:success] = "Item added"
       redirect_back(fallback_location: root_path)
     else
-      @cart_item =  CartItem.new
-      @cart_item.cart_id = current_user.cart.id
-      @cart_item.product_id = params[:product_id]
-      if @cart_item.save
-        redirect_back(fallback_location: root_path)
-        flash[:success] = "item added"
-      else
-        redirect_back(fallback_location: root_path)
-        flash[:danger] = @cart_item.errors.full_messages.first
-      end
+      @cart_item = CartItem.create(cart_id: current_user.cart.id, product_id: params[:product_id])
+      flash[:success] = "Item added"
+      redirect_back(fallback_location: root_path)
     end
   end
 
