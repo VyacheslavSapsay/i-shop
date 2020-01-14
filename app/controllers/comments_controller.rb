@@ -12,6 +12,9 @@ class CommentsController < ApplicationController
   end
 
   def create
+    if @product.comments.find_by(user_id: current_user.id)
+      redirect_back(fallback_location: root_path)
+    else
     @comment = @product.comments.create(comment_params)
     @comment.user_id = current_user.id
         if @comment.save
@@ -21,6 +24,7 @@ class CommentsController < ApplicationController
           redirect_to @product
           flash[:danger] = @comment.errors.full_messages.first
       end
+    end
   end
 
   def destroy
