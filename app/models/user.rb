@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :comments
+  has_many :orders
   has_one :cart, dependent: :destroy
   validate :pass_val
   validates :email, uniqueness: true, presence: true

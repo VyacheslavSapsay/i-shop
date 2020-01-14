@@ -1,0 +1,35 @@
+<div class="container main">
+<%= current_user.id %>
+  <%= form_with(model: @order, local: true) do |form| %>
+    <% if @order.errors.any? %>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+        <ul>
+          <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <br>
+    <%= form.text_field :first_name, class:'form-control' %>
+  </div>
+
+  <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: "form-control"%>
+  </div>
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address, class: "form-control"%>
+  </div>
+
+  <br>
+  <div class="text-center actions">
+    <%= form.submit 'Submit', class: "btn btn-dark" %>
+  </div>
+  <% end %>
+</div>

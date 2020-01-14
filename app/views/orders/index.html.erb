@@ -1,0 +1,9 @@
+<div class="container">
+<% @orders.each do |order| %>
+<p><%= order.first_name %></p>
+<p><%= order.last_name %></p>
+<p><% order.cart_items.each do |item| %></p>
+<p><%= item.product.title %></p>
+<% end %>
+<% end %>
+</div>
