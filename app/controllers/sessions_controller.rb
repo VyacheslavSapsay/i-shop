@@ -4,16 +4,18 @@ class SessionsController < ApplicationController
 
   def create
     user = login(params[:email], params[:password])
-    if user.admin?
+    if user
       create_or_set_cart
-      redirect_to admin_products_path
-    elsif user
-      create_or_set_cart
-      redirect_back_or_to root_path
       flash[:success] = 'Logged in!'
+      if user.admin?
+        create_or_set_cart
+        redirect_to admin_products_path
+      else
+        redirect_to root_path
+      end
     else
-      flash.now[:danger] = 'Email or password is invalid'
-      render :new
+      flash[:danger] = 'Email or password is invalid'
+      redirect_back(fallback_location: root_path)
     end
   end
 

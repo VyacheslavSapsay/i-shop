@@ -1,3 +1,24 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.create-order {
+  margin-bottom: 5em;
+}
+.order-index {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: 2px solid #494342;
+  background-color:rgba(9, 159, 214, 0.2);
+  padding: 10px;
+}
+.order-index-title {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.order-info {
+  margin-left: 5em;
+}
+#order-products-separator {
+  color: black;
+}

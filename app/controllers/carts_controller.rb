@@ -1,11 +1,22 @@
 class CartsController < ApplicationController
-  before_action :set_cart
-def show
-  @cart_items = CartItem.all.where(cart_id: @cart.id)
-end
+  def show
+    @cart_items = current_user.cart.cart_items
+  end
 
+  def plus_quantity
+    @cart_item = CartItem.find(params[:cart_item])
+    @cart_item.update(quantity: @cart_item.quantity += 1)
+    redirect_back(fallback_location: root_path)
+  end
 
-def set_cart
-  @cart = Cart.find_by_user_id(current_user.id)
-end
+  def minus_quantity
+    @cart_item = CartItem.find(params[:cart_item])
+    if @cart_item.quantity <= 0
+      redirect_back(fallback_location: root_path)
+    else
+      @cart_item.update(quantity: @cart_item.quantity -= 1)
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
 end

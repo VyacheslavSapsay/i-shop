@@ -1,0 +1,16 @@
+<div class="container">
+<h1>Order #<%= @order.id %></h1>
+<p>Name: <strong><%= @order.first_name %></strong></p>
+<p>Last name: <strong><%= @order.last_name %></strong></p>
+<p>Adress: <strong><%= @order.address %></strong></p>
+<% @order.cart_items.each do |item| %>
+<%= link_to item.product do %>
+<% if item.product.images?  %>
+  <%= image_tag(item.product.images.first.url(:thumb), class: "rounded mx-auto d-block")%>
+<% else %>
+  <%= image_tag("https://images-na.ssl-images-amazon.com/images/I/41fhsnzKEgL._SX258_BO1,204,203,200_.jpg", class: "small-placeholder-image")%>
+<% end  %>
+<%= item.product.title %>
+<% end  %>
+<% end  %>
+</div>

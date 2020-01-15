@@ -1,9 +1,23 @@
-<div class="container">
 <% @orders.each do |order| %>
-<p><%= order.first_name %></p>
-<p><%= order.last_name %></p>
-<p><% order.cart_items.each do |item| %></p>
-<p><%= item.product.title %></p>
+  <div class="container order-index">
+    <%= link_to order_path(order) do %>
+  <p class="text-center"><span class="order-index-title">Order #</span><span><%= order.id %></span></p>
+  <% end %>
+  <p><% order.cart_items.each do |item| %></p>
+  <div class="text-center">
+    <%= link_to product_path(item.product), class:"product_title" do %>
+      <% if item.product.images?  %>
+        <%= image_tag(item.product.images.first.url(:thumb), class: "rounded mx-auto d-block")%>
+      <% else %>
+        <%= image_tag("https://images-na.ssl-images-amazon.com/images/I/41fhsnzKEgL._SX258_BO1,204,203,200_.jpg", class: "rounded mx-auto d-block index-product-image")%>
+      <% end  %>
+        <div class="product_title text-center">
+          <b><%= item.product.title%></b><b class="" (<%= item.quantity %>)</b>
+          <p><%= full_price(item) %> ₴</p>
+        </div>
 <% end %>
+          <br id="order-products-separator">
+  </div>
+  <% end %>
+  </div>
 <% end %>
-</div>

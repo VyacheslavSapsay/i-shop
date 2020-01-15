@@ -65,8 +65,8 @@
           <% if current_user.admin %>
            <%= link_to (fa_icon "exchange", text: t("navbar.user_actions.admin_side")), admin_products_path, class: "dropdown-item" %>
           <% end %>
-          <%= link_to (t 'navbar.user_actions.log_out'), logout_path, class: "btn btn-outline-dark my-2 my-lg-0 dropdown-item"%>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%= link_to (fa_icon "bolt", text: 'Orders'), orders_path, class: "dropdown-item"%>
+          <%= link_to (t 'navbar.user_actions.log_out'), logout_path, class: "dropdown-item"%>
         </div>
       </div>
       <% else %>
@@ -75,7 +75,7 @@
       <% end %>
     </div>
   </nav>
-    <div class="container">
+    <div class="container action-allert">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>

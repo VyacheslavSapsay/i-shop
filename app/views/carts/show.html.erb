@@ -1,23 +1,31 @@
 <div class="text-center">
-<% @cart_items.each do |cart_item| %>
-    <%= link_to cart_item.product do %>
-    <div class="img-wrap">
-      <% if cart_item.product.images?  %>
-        <%= image_tag(cart_item.product.images.first.url(:thumb), class: "rounded mx-auto d-block")%>
-      <% else %>
-        <%= image_tag("https://images-na.ssl-images-amazon.com/images/I/41fhsnzKEgL._SX258_BO1,204,203,200_.jpg", class: "rounded mx-auto d-block index-product-image")%>
-      <% end  %>
-      <%= link_to (fa_icon "trash"), cart_item_path(cart_item),
-      method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger delete" %>
-    </div>
-    <br>
-    <div class="cart-item-info">
-      <%= link_to (fa_icon "minus"), cart_path, class: "btn btn-outline-danger minus-product" %>
-      <b><%= cart_item.product.title%></b>
-      <span class="quantity">(<%= cart_item.quantity %>)</span><%= link_to (fa_icon "plus"), cart_path, class: "btn btn-outline-success plus-product" %>
-      <p><%= cart_item.product.price * cart_item.quantity %> ₴</p>
-    </div>
+  <% if current_user.cart.cart_items.count > 0 %>
+    <% @cart_items.each do |cart_item| %>
+        <%= link_to cart_item.product do %>
+        <div class="img-wrap">
+          <% if cart_item.product.images?  %>
+            <%= image_tag(cart_item.product.images.first.url(:thumb), class: "rounded mx-auto d-block")%>
+          <% else %>
+            <%= image_tag("https://images-na.ssl-images-amazon.com/images/I/41fhsnzKEgL._SX258_BO1,204,203,200_.jpg", class: "rounded mx-auto d-block index-product-image")%>
+          <% end  %>
+          <%= link_to (fa_icon "trash"), cart_item_path(cart_item),
+          method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger delete" %>
+        </div>
+        <br>
+        <div class="cart-item-info">
+          <%= link_to (fa_icon "minus"), cart_path, class: "btn btn-outline-danger minus-product" if cart_item.quantity > 1 %>
+          <b><%= cart_item.product.title%></b>
+          <span id="quantity">(<%= cart_item.quantity %>)</span><%= link_to (fa_icon "plus"), plus_quantity_carts_path(cart_item: cart_item.id), class: "btn btn-outline-success plus-product" %>
+          <p><%= cart_item.product.price * cart_item.quantity %> ₴</p>
+        </div>
+        <% end %>
+        <br>
     <% end %>
-    <br>
-<% end %>
+    <div class="container">
+    <%= link_to (fa_icon "arrow-right", text: 'create-order'), new_order_path, class: "btn btn-success pull-right create-order btn-lg" %>
+    </div>
+  <% else %>
+    <span id="cart-empty">You cart is empty &#9785;</span>
+    <%= link_to "Let's fix this", products_path, id: "cart-item-fix-this" %>
+  <% end %>
 </div>

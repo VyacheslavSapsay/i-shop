@@ -1,5 +1,4 @@
 <div class="container main">
-<%= current_user.id %>
   <%= form_with(model: @order, local: true) do |form| %>
     <% if @order.errors.any? %>
       <div class="alert alert-danger">
