@@ -25,7 +25,9 @@
     <%= link_to (fa_icon "arrow-right", text: 'create-order'), new_order_path, class: "btn btn-success pull-right create-order btn-lg" %>
     </div>
   <% else %>
+  <div class="cart-empty">
     <span id="cart-empty">You cart is empty &#9785;</span>
     <%= link_to "Let's fix this", products_path, id: "cart-item-fix-this" %>
+  </div>
   <% end %>
 </div>
