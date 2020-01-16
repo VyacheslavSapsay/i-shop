@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user
       create_or_set_cart
       flash[:success] = 'Logged in!'
-      if user.admin?
+      if user&.admin?
         create_or_set_cart
         redirect_to admin_products_path
       else

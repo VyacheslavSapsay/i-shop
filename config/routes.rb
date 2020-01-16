@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :carts do
       collection do
         get 'plus_quantity'
+        get 'minus_quantity'
       end
     end
     resources :products do

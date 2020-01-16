@@ -13,7 +13,7 @@
         </div>
         <br>
         <div class="cart-item-info">
-          <%= link_to (fa_icon "minus"), cart_path, class: "btn btn-outline-danger minus-product" if cart_item.quantity > 1 %>
+          <%= link_to (fa_icon "minus"), minus_quantity_carts_path(cart_item: cart_item.id), class: "btn btn-outline-danger minus-product" if cart_item.quantity > 1 %>
           <b><%= cart_item.product.title%></b>
           <span id="quantity">(<%= cart_item.quantity %>)</span><%= link_to (fa_icon "plus"), plus_quantity_carts_path(cart_item: cart_item.id), class: "btn btn-outline-success plus-product" %>
           <p><%= cart_item.product.price * cart_item.quantity %> ₴</p>

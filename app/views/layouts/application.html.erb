@@ -75,10 +75,12 @@
       <% end %>
     </div>
   </nav>
+  <% unless current_page?(root_url) %>
     <div class="container action-allert">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
+  <% end %>
     </div>
     <div class="content">
       <%= yield %>

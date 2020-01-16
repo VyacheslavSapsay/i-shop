@@ -43,7 +43,7 @@
   <br>
   <%= render @product.comments %>
   <br>
-  <% if (@product.comments.find_by(user_id: current_user.id)) %>
+  <% if (@product.comments.find_by(user_id: current_user&.id)) %>
     <p class="alert alert-warning"><strong>You can only once leave comment</strong></p>
   <% elsif current_user%>
      <%= render 'comments/form' %>
