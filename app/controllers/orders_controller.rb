@@ -8,19 +8,44 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def new
-    @order = Order.new
-  end
-
-  def create
+  def unloged_user
     @order = Order.new(order_params)
-    @order.cart_items = current_user.cart.cart_items
-    clear_cart(current_user.cart)
-    @order.user_id = current_user.id
+    @order.products = cookies[:cart_items].split(',')
     if @order.save
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def new
+    @order = Order.new
+  end
+
+  def new2
+    @order = Order.new
+  end
+
+  def create
+    if current_user
+      @order = Order.new(order_params)
+      @order.cart_items = current_user.cart.cart_items
+      clear_cart(current_user.cart)
+      @order.user_id = current_user.id
+      if @order.save
+        redirect_to root_path
+      else
+        render :new
+      end
+    else
+      @order = Order.new(order_params)
+      @order.product_ids = cookies[:cart_items].split(',')
+      @order_id = 100
+      if @order.save
+        redirect_to root_path
+      else
+        render :new
+      end
     end
   end
 

@@ -1,0 +1,20 @@
+<div class="container text-center">
+<% @products.each do |product| %>
+    <%= link_to product do %>
+    <div class="img-wrap">
+      <% if product.images?  %>
+        <%= image_tag(product.images.first.url(:thumb), class: "rounded mx-auto d-block")%>
+      <% else %>
+        <%= image_tag("https://images-na.ssl-images-amazon.com/images/I/41fhsnzKEgL._SX258_BO1,204,203,200_.jpg", class: "rounded mx-auto d-block index-product-image")%>
+      <% end  %>
+    </div>
+    <br>
+    <div class="cart-item-info">
+      <b><%= product.title%></b>
+      <p><%= product.price%> ₴</p>
+    </div>
+    <% end %>
+    <br>
+<% end %>
+<%= link_to (fa_icon "arrow-right", text: 'create-order'), new2_orders_path, class: "btn btn-success pull-right create-order btn-lg" %>
+</div>

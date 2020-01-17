@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :orders
+  resources :orders do
+    collection do
+    get 'unloged_user'
+    get 'new2'
+  end
+  end
   resources :cart_items
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/, defaults: {locale: "en"} do
     root 'products#index'
@@ -7,6 +12,7 @@ Rails.application.routes.draw do
       collection do
         get 'plus_quantity'
         get 'minus_quantity'
+        get 'show_unloged_user'
       end
     end
     resources :products do

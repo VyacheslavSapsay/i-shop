@@ -13,8 +13,12 @@ class CartItemsController < ApplicationController
         redirect_back(fallback_location: root_path)
       end
     else
+      #cart_items = []
+      #cart_items.push(params[:product_id])
+      #cookies[:cart_items] = cart_items
+      cookies[:cart_items] = '' if cookies[:cart_items].nil?
+      cookies[:cart_items] = cookies[:cart_items] + "#{params[:product_id]} ,"
       redirect_back(fallback_location: root_path)
-      flash[:danger] = "Plz Log in or registration"
     end
   end
 

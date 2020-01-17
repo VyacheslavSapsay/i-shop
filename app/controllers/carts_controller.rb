@@ -3,6 +3,11 @@ class CartsController < ApplicationController
     @cart_items = current_user.cart.cart_items
   end
 
+  def show_unloged_user
+    ids = cookies[:cart_items].split(',')
+    @products = Product.where(id: ids)
+  end
+
   def plus_quantity
     @cart_item = CartItem.find(params[:cart_item])
     @cart_item.update(quantity: @cart_item.quantity += 1)

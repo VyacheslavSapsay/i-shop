@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   has_many :categories, through: :product_categories
   has_many :comments
   has_many :cart_items, dependent: :destroy
+  belongs_to :order, optional: true
   has_rich_text :description
 
   scope :cheapest, -> { order("price ASC") }

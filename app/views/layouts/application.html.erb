@@ -28,7 +28,11 @@
           <%= link_to (fa_icon "list", text: t("general.categories")), categories_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to (fa_icon "shopping-cart", text: t("navbar.cart")), cart_path(id: current_user.id), class: "nav-link"  if current_user%>
+          <%  if current_user %>
+            <%= link_to (fa_icon "shopping-cart", text: t("navbar.cart")), cart_path(id: current_user.id), class: "nav-link"%>
+          <% else %>
+            <%= link_to (fa_icon "shopping-cart", text: t("navbar.cart")), show_unloged_user_carts_path, class: "nav-link"%>
+          <% end %>
         </li>
         <li class="nav-item mx-auto order-0">
           <div class="form-inline mx-auto order-0">
