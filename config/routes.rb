@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :orders
-  resources :cart_items
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/, defaults: {locale: "en"} do
+    resources :orders
+    resources :cart_items
     root 'products#index'
     resources :carts do
       collection do
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         end
       end
       resources :products, controller: 'backoffice/products', as: "admin_products"
+      resources :orders, controller: 'backoffice/orders', as: 'admin_orders'
     end
 
       resources :users

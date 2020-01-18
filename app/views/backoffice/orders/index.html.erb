@@ -1,17 +1,12 @@
 <% @orders.each do |order| %>
   <div class="container order-index">
-    <%= link_to order_path(order) do %>
+    <%= link_to admin_order_path(order) do %>
   <p class="text-center"><span class="order-index-title">Order #</span><span><%= order.id %></span></p>
   <% end %>
+  <%= order.address %>
   <p><% order.cart_items.each do |item| %></p>
   <div class="text-center">
-    <%= order.status %>
     <%= link_to product_path(item.product), class:"product_title" do %>
-      <% if item.product.images?  %>
-        <%= image_tag(item.product.images.first.url(:thumb), class: "rounded mx-auto d-block")%>
-      <% else %>
-        <%= image_tag("https://images-na.ssl-images-amazon.com/images/I/41fhsnzKEgL._SX258_BO1,204,203,200_.jpg", class: "rounded mx-auto d-block index-product-image")%>
-      <% end  %>
         <div class="product_title text-center">
           <b><%= item.product.title%></b><b class="" (<%= item.quantity %>)</b>
           <p><%= full_price(item) %> ₴</p>
@@ -20,5 +15,6 @@
           <br id="order-products-separator">
   </div>
   <% end %>
+  <%= order.status %>
   </div>
 <% end %>

@@ -1,4 +1,5 @@
 <div class="container main">
+  <h1>Create order</h1>
   <%= form_with(model: @order, local: true) do |form| %>
     <% if @order.errors.any? %>
       <div class="alert alert-danger">
@@ -12,18 +13,23 @@
     <% end %>
 
   <div class="field">
-    <%= form.label :first_name %>
-    <br>
-    <%= form.text_field :first_name, class:'form-control' %>
+    <%= form.text_field :first_name, class:'form-control', placeholder: "First name" %>
   </div>
-
+<br>
   <div class="field">
-      <%= form.label :last_name %>
-      <%= form.text_field :last_name, class: "form-control"%>
+      <%= form.text_field :last_name, class: "form-control", placeholder: "Last name"%>
   </div>
+  <br>
   <div class="field">
-    <%= form.label :address %>
-    <%= form.text_area :address, class: "form-control"%>
+    <%= form.text_field :phone, class: "form-control", type: "number", placeholder: "Phone"%>
+  </div>
+<br>
+  <div class="field">
+    <%= form.text_field :email, class: "form-control", placeholder: current_user.email%>
+  </div>
+<br>
+  <div class="field">
+    <%= form.text_area :address, class: "form-control", placeholder: "Address"%>
   </div>
 
   <br>
