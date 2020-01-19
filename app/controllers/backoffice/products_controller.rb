@@ -51,11 +51,6 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
     @product = Product.friendly.find(params[:id])
   end
 
-  def admin?
-    unless current_user&.admin
-      redirect_to root_path
-    end
-  end
 
   private
   def set_product
