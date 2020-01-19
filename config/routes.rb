@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/, defaults: {locale: "en"} do
+    get "/pages/:page" => "pages#show"
     resources :orders
     resources :cart_items
     root 'products#index'
