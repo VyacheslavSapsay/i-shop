@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :current_user_exist?, except: %i[destroy]
   def new
   end
 

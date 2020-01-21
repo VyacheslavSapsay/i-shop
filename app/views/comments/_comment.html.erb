@@ -2,7 +2,7 @@
   <div class="comment<%= comment.id %>">
     <p><strong><%= comment.user.email %></strong>:<%= comment.comment %></p>
   <span data-toggle="tooltip" data-placement="top" title="<%= comment.rating %>">
-    <% comment.rating.times do %>
+    <% comment.rating&.times do %>
         <%= fa_icon "star" %>
     <% end %>
   </span>
