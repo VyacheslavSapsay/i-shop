@@ -1,4 +1,4 @@
-class Order < ActiveRecord::Migration[6.0]
+class AddOrder < ActiveRecord::Migration[6.0]
   def change
     create_table :orders do |t|
       t.string :first_name
