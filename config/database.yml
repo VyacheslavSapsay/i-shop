@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: i_shop_production
-  username: i_shop
+  database: i_shop
+  username: deployer
   password: <%= ENV['I_SHOP_DATABASE_PASSWORD'] %>
