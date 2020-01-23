@@ -5,6 +5,7 @@
   <% end %>
   <p><% order.cart_items.each do |item| %></p>
   <div class="text-center">
+    <%= order.status %>
     <%= link_to product_path(item.product), class:"product_title" do %>
       <% if item.product.images?  %>
         <%= image_tag(item.product.images.first.url(:thumb), class: "rounded mx-auto d-block")%>

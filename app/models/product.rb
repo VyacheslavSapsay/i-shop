@@ -9,6 +9,9 @@ class Product < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_rich_text :description
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   scope :cheapest, -> { order("price ASC") }
   scope :expensive, -> { order("price DESC") }
   scope :newest, -> { order("created_at DESC") }

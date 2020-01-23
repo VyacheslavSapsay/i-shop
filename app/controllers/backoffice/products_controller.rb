@@ -1,5 +1,5 @@
 class Backoffice::ProductsController < Backoffice::BackofficeController
-  before_action :set_product, only: %i[show edit update destroy]
+  before_action :set_product, only: %i[edit update destroy show]
   before_action :admin?
 
   def index
@@ -48,18 +48,12 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
-  def admin?
-    unless current_user&.admin
-      redirect_to root_path
-    end
-  end
 
   private
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
   end
 
   def product_params

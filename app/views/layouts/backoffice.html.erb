@@ -40,6 +40,7 @@
             <%= link_to (fa_icon "plus-circle", text: (t "navbar.admin_actions.new_product")), new_admin_product_path, class: "dropdown-item" %>
             <%= link_to (fa_icon "plus-circle", text: (t "navbar.admin_actions.new_category")), new_admin_category_path, class: "dropdown-item" %>
             <%= link_to (fa_icon "edit", text: (t "navbar.admin_actions.edit_category")), choose_category_admin_categories_path, class: "dropdown-item" %>
+            <%= link_to (fa_icon "bolt", text: "Orders"), admin_orders_path, class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
           <%= link_to (fa_icon "exchange", text: (t "navbar.admin_actions.client_side")), root_path, class: "dropdown-item" %>
         </div>

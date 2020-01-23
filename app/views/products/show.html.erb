@@ -38,7 +38,8 @@
   </div>
   <% # image_tag @product.images.url(:large), class: "img-show" if @product.images? %>
   <p><%= @product.description %></p>
-  <%= link_to (fa_icon "shopping-cart", text: "buy"), product_buy_path(@product), class: "btn btn-outline-primary" %>
+  <span id="product-price"><b><%= @product.price %>₴</b></span>
+  <%= link_to (fa_icon "shopping-cart", text: "Buy"), product_buy_path(@product), class: "btn btn-outline-primary btn-lg" %>
     <strong class="product-rating pull-right"><%= average_product_rating(@product)%><%= fa_icon "star"  %></strong>
   <br>
   <%= render @product.comments %>

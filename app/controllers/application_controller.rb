@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     before_action :set_locale
 
   def current_user_exist?
-    redirect_to home_path if current_user.present?
+    redirect_back(fallback_location: root_path) if current_user
   end
 
   private

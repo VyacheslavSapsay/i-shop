@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <button onclick="topFunction()" id="up-button" title="Go to top"><%= fa_icon "arrow-up" %></button>
     <!--<div class="banner">-->
         <!--<div class="banner-text">-->
           <!--   <strong>SsPay</strong>-->
@@ -134,5 +135,25 @@
       </div>
     </div>
 </footer>
+<script>
+//Get the button
+var upbutton = document.getElementById("up-button");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    upbutton.style.display = "block";
+  } else {
+    upbutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
   </body>
 </html>

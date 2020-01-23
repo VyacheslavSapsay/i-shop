@@ -1,0 +1,20 @@
+<% @orders.each do |order| %>
+  <div class="container order-index">
+    <%= link_to admin_order_path(order) do %>
+  <p class="text-center"><span class="order-index-title">Order #</span><span><%= order.id %></span></p>
+  <% end %>
+  <%= order.address %>
+  <p><% order.cart_items.each do |item| %></p>
+  <div class="text-center">
+    <%= link_to product_path(item.product), class:"product_title" do %>
+        <div class="product_title text-center">
+          <b><%= item.product.title%></b><b class="" (<%= item.quantity %>)</b>
+          <p><%= full_price(item) %> ₴</p>
+        </div>
+<% end %>
+          <br id="order-products-separator">
+  </div>
+  <% end %>
+  <%= order.status %>
+  </div>
+<% end %>

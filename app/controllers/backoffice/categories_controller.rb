@@ -49,12 +49,6 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
     end
   end
 
-  def admin?
-    unless current_user&.admin
-      redirect_to root_path
-    end
-  end
-
   def choose_category
     @categories = Category.order(:title)
   end
