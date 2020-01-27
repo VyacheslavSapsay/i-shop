@@ -3,6 +3,6 @@ production:
   host: 127.0.0.1
   database: i-shop
   username: deployer
-  password: opudag52
+  password: <%= ENV['I_SHOP_DATABASE_PASSWORD'] %>
   encoding: unicode
   pool: 5
