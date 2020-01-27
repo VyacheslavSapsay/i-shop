@@ -1,11 +1,12 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.where(user_id: current_user.id).order(created_at: :desc)
+    @orders = Order.where(user_id: current_user.id).order(created_at: :desc) if current_user
   end
 
   def show
     @order = Order.find(params[:id])
+    redirect_back(fallback_location: root_path) unless @order.user_id == current_user.id
   end
 
   def new

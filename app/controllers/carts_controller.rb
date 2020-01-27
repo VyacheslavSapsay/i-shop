@@ -1,7 +1,11 @@
 class CartsController < ApplicationController
   
   def show
-    @cart_items = current_user.cart.cart_items
+    if current_user
+      @cart_items = current_user.cart.cart_items
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def plus_quantity

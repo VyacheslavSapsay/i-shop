@@ -1,3 +1,4 @@
+<% set_page_title("#{@category.title}s | I-Shop") %>
 <div class="container">
     <h1><%= t "category.products_in_category"  %>: "<%= @category.title %>"</h1>
     <div class="row">
@@ -12,6 +13,11 @@
                 <% break if n > 0 %>
               <% end %>
                   <div class="product_title text-center">
+                    <% if product.images?  %>
+                      <%= image_tag(product.images.first.url(:thumb), class: "rounded mx-auto d-block")%>
+                    <% else %>
+                      <%= image_tag("https://images-na.ssl-images-amazon.com/images/I/41fhsnzKEgL._SX258_BO1,204,203,200_.jpg", class: "rounded mx-auto d-block index-product-image")%>
+                    <% end  %>
                     <b><%= product.title%></b>
                     <p><%= product.price %> ₴</p>
                     <%= link_to (fa_icon "cart-plus", text: (t "general.buy")), product_path(product), class: "btn btn-outline-primary" %>

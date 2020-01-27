@@ -1,3 +1,4 @@
+<% set_page_title("Cart | I-Shop") %>
 <div class="text-center">
   <% if current_user.cart.cart_items.count > 0 %>
     <% @cart_items.each do |cart_item| %>

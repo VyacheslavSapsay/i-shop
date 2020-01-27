@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IShop</title>
+    <title><%= content_for?(:page_title) ? yield(:page_title) : "I-Shop" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
