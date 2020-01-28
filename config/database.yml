@@ -82,4 +82,4 @@ production:
   <<: *default
   database: i_shop
   username: deployer
-  password: <%= ENV['I_SHOP_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials[:db_pass] %>

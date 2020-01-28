@@ -3,6 +3,6 @@ production:
   host: 127.0.0.1
   database: i-shop
   username: deployer
-  password: <%= ENV['I_SHOP_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials[:db_pass] %>
   encoding: unicode
   pool: 5
