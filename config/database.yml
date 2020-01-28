@@ -82,4 +82,4 @@ production:
   <<: *default
   database: i_shop
   username: deployer
-  password: <%= Rails.application.credentials[:db_pass] %>
+  password: opudag52
