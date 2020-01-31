@@ -18,6 +18,9 @@ class OrdersController < ApplicationController
     @order.cart_items = current_user.cart.cart_items
     clear_cart(current_user.cart)
     @order.user_id = current_user.id
+    @order.cart_items.each do |cart_item|
+      @order.price += cart_item.quantity * cart_item.price
+    end
     if @order.save
       redirect_to root_path
     else
@@ -26,8 +29,8 @@ class OrdersController < ApplicationController
   end
 
   def clear_cart(cart)
-      cart.cart_items.each do |item|
-        item.cart_id = nil
+    cart.cart_items.each do |item|
+      item.cart_id = nil
     end
   end
 

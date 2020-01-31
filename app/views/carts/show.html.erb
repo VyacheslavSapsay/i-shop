@@ -23,6 +23,7 @@
         <br>
     <% end %>
     <div class="container">
+      <p id="full-price">Full price: <%= cart_full_price(@cart_items) %></p>
     <%= link_to (fa_icon "arrow-right", text: 'create-order'), new_order_path, class: "btn btn-success pull-right create-order btn-lg" %>
     </div>
   <% else %>

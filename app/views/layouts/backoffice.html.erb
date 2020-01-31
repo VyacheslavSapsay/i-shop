@@ -12,7 +12,6 @@
   </head>
 
   <body>
-    <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <%= link_to (fa_icon "heart", text: "I-Shop"), admin_products_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +30,21 @@
           </form>
         </li>
       </ul>
+      <div class="dropdown">
+        <button class="btn btn-outline-info btn-sm pull-right dropdown-toggle set-language" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= set_language_dropdown %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%= link_to url_for(locale: 'en'), class: 'dropdown-item' do %>
+            <%= flag_icon(:eu) %>
+            English
+          <% end %>
+          <%= link_to url_for(locale: 'ru'), class: 'dropdown-item' do %>
+            <%= flag_icon(:ru) %>
+            Русский
+          <% end %>
+        </div>
+      </div>
       <% if current_user %>
       <li class="dropdown btn btn-outline-primary">
         <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,7 +66,6 @@
         <%= link_to (t 'navbar.user_actions.sign_up'), signup_path, class: "btn btn-primary my-2 my-lg-0" %>
         <%= link_to (t 'navbar.user_actions.log_in'), login_path, class: "btn btn-primary my-2 my-lg-0" %>
       <% end %>
-    </div>
   </nav>
     </div>
     <div class="container">
@@ -63,19 +76,6 @@
     <div class="main-main container">
       <div class="main-main container">
         <div class="dropdown">
-          <button class="btn btn-outline-info btn-sm pull-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Language
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%= link_to url_for(locale: 'en'), class: 'dropdown-item' do %>
-              <%= flag_icon(:eu) %>
-              English
-            <% end %>
-            <%= link_to url_for(locale: 'ru'), class: 'dropdown-item' do %>
-              <%= flag_icon(:ru) %>
-              Русский
-            <% end %>
-          </div>
           <%= yield %>
     </div>
   </body>

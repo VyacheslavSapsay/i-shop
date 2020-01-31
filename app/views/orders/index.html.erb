@@ -1,5 +1,18 @@
 <% set_page_title("Orders | I-Shop") %>
 <% if current_user %>
+  <div class="container">
+    <div class="dropdown pull-right">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= fa_icon "product.sort.sort" %> <%= t "sort" %>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <%= link_to "new", orders_path(sort: 'new'), class: "dropdown-item" %>
+      <%= link_to "in progress", orders_path(sort: 'in progress'), class: "dropdown-item" %>
+      <%= link_to "completed", orders_path(sort: 'completed'), class: "dropdown-item" %>
+      <%= link_to "cancelled", orders_path(sort: 'cancelled'), class: "dropdown-item" %>
+    </div>
+    </div>
+  </div>
   <% @orders.each do |order| %>
     <div class="container order-index">
       <%= link_to order_path(order) do %>
@@ -19,9 +32,12 @@
             <p><%= full_price(item) %> ₴</p>
           </div>
   <% end %>
+  <hr>
             <br id="order-products-separator">
     </div>
     <% end %>
+    <p><strong>Order status:</strong><%= order.status %></p>
+    <p><strong>Order price:</strong><%= order.price %>₴</p>
     </div>
   <% end %>
 <% else %>

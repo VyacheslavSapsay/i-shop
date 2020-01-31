@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def full_price(item)
-    item.quantity * item.product.price
+    item.quantity * item.price
   end
   def header_must_be
     current_page?(root_url, check_parameters: true)

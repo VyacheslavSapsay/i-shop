@@ -5,6 +5,7 @@
   <p>Last name: <strong><%= @order.last_name %></strong></p>
   <p>Adress: <strong><%= @order.address %></strong></p>
   <p>Status: <strong><%= @order.status %></strong></p>
+  <p>Order price:<strong><%= @order.price %></strong></p>
   <% @order.cart_items.each do |item| %>
     <%= link_to item.product do %>
       <% if item.product.images?  %>
