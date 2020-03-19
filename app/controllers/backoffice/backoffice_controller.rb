@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Backoffice::BackofficeController < ActionController::Base
   layout 'backoffice.html.erb'
   before_action :set_locale
@@ -22,9 +24,6 @@ class Backoffice::BackofficeController < ActionController::Base
   end
 
   def admin?
-    unless current_user&.admin
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user&.admin
   end
-  
 end

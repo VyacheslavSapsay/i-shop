@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateProductCategories < ActiveRecord::Migration[6.0]
   def change
     create_table :product_categories do |t|
@@ -8,7 +10,5 @@ class CreateProductCategories < ActiveRecord::Migration[6.0]
     end
 
     change_column :products, :category_id, :bigint
-
   end
-
 end

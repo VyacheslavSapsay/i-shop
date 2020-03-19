@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Product < ApplicationRecord
   mount_uploaders :images, ProductsImageUploader
   validates :title, uniqueness: true, presence: true
@@ -12,8 +14,8 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  scope :cheapest, -> { order("price ASC") }
-  scope :expensive, -> { order("price DESC") }
-  scope :newest, -> { order("created_at DESC") }
-  scope :oldest, -> { order("created_at ASC") }
+  scope :cheapest, -> { order('price ASC') }
+  scope :expensive, -> { order('price DESC') }
+  scope :newest, -> { order('created_at DESC') }
+  scope :oldest, -> { order('created_at ASC') }
 end

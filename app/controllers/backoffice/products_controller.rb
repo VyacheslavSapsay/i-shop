@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Backoffice::ProductsController < Backoffice::BackofficeController
   before_action :set_product, only: %i[edit update destroy show]
   before_action :admin?
@@ -13,21 +15,18 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   def create
     @product = Product.new(product_params)
     respond_to do |format|
-    if @product.save
-      flash[:success] = 'Product was successfully created.'
-        format.html { redirect_to admin_product_path(@product)}
+      if @product.save
+        flash[:success] = 'Product was successfully created.'
+        format.html { redirect_to admin_product_path(@product) }
         format.json { render :show, status: :created, location: @product }
-    else
+      else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+        end
     end
   end
 
-  def edit
-
-  end
-
+  def edit; end
 
   def update
     if @product.update_attributes(product_params)
@@ -41,17 +40,16 @@ class Backoffice::ProductsController < Backoffice::BackofficeController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to admin_products_path}
+      format.html { redirect_to admin_products_path }
       flash[:warning] = 'Product was successfully destroyed.'
       format.json { head :no_content }
     end
   end
 
-  def show
-  end
-
+  def show; end
 
   private
+
   def set_product
     @product = Product.friendly.find(params[:id])
   end

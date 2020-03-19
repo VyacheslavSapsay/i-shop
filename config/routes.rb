@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-    get "/pages/:page" => "pages#show"
+  scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
+    get '/pages/:page' => 'pages#show'
     resources :orders
     resources :cart_items
     root 'products#index'
@@ -19,20 +21,20 @@ Rails.application.routes.draw do
     resources :categories
 
     scope '/admin' do
-      resources :categories, controller: 'backoffice/categories', as: "admin_categories" do
+      resources :categories, controller: 'backoffice/categories', as: 'admin_categories' do
         collection do
           get 'choose_category'
         end
       end
-      resources :products, controller: 'backoffice/products', as: "admin_products"
+      resources :products, controller: 'backoffice/products', as: 'admin_products'
       resources :orders, controller: 'backoffice/orders', as: 'admin_orders'
     end
 
-      resources :users
-      resources :sessions
+    resources :users
+    resources :sessions
 
-      get 'signup', to: 'users#new', as: 'signup'
-      get 'login', to: 'sessions#new', as: 'login'
-      get 'logout', to: 'sessions#destroy', as: 'logout'
-    end
+    get 'signup', to: 'users#new', as: 'signup'
+    get 'login', to: 'sessions#new', as: 'login'
+    get 'logout', to: 'sessions#destroy', as: 'logout'
+  end
 end

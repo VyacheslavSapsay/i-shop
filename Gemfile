@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
-gem 'flag-icons-rails'
-gem 'friendly_id', '~> 5.2.4'
-gem "wysiwyg-rails"
-gem 'russian', '~> 0.6.0'
-gem 'sorcery'
-gem 'carrierwave', '~> 2.0'
-gem "mini_magick"
-gem 'slim'
-gem "font-awesome-rails"
-gem 'font_awesome5_rails'
 gem 'bootstrap-will_paginate'
+gem 'carrierwave', '~> 2.0'
+gem 'flag-icons-rails'
+gem 'font-awesome-rails'
+gem 'font_awesome5_rails'
+gem 'friendly_id', '~> 5.2.4'
+gem 'mini_magick'
+gem 'russian', '~> 0.6.0'
+gem 'slim'
+gem 'sorcery'
+gem 'wysiwyg-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2'
 # Use pg as the database for Active Record
@@ -40,23 +42,23 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'capistrano', '~> 3.8', '>= 3.8.1'
+  gem 'capistrano-nginx', '~> 1.0'
+  gem 'capistrano-rails', '~> 1.2', '>= 1.2.3'
   gem 'capistrano-rbenv'
   gem 'capistrano-rvm', '~> 0.1.2'
-  gem 'capistrano-rails', '~> 1.2', '>= 1.2.3'
-  gem 'capistrano3-puma'
-  gem 'capistrano-nginx', '~> 1.0'
   gem 'capistrano-upload-config', '~> 0.7.0'
+  gem 'capistrano3-puma'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sshkit-sudo', '~> 0.1.0'
 end
 
@@ -69,4 +71,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

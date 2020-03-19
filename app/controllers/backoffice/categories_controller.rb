@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Backoffice::CategoriesController < Backoffice::BackofficeController
   before_action :set_category, only: %i[show edit update destroy]
   before_action :admin?
@@ -6,8 +8,7 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
     @categories = Category.order(:title)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @category = Category.new
@@ -16,14 +17,14 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
   def create
     @category = Category.new(category_params)
     respond_to do |format|
-    if @category.save
+      if @category.save
         flash[:success] = 'Category was successfully created.'
         format.html { redirect_to @category, url: admin_products_path }
         format.json { render :show, status: :created, location: @category }
-    else
+      else
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+        end
     end
   end
 
@@ -36,9 +37,7 @@ class Backoffice::CategoriesController < Backoffice::BackofficeController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def destroy
     @category.destroy

@@ -1,12 +1,17 @@
-class OrdersController < ApplicationController
+# frozen_string_literal: true
 
+class OrdersController < ApplicationController
   def index
-    @orders = Order.where(user_id: current_user.id).order(created_at: :desc) if current_user
+    if current_user
+      @orders = Order.where(user_id: current_user.id).order(created_at: :desc)
+    end
   end
 
   def show
     @order = Order.find(params[:id])
-    redirect_back(fallback_location: root_path) unless @order.user_id == current_user.id
+    unless @order.user_id == current_user.id
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def new
@@ -35,7 +40,6 @@ class OrdersController < ApplicationController
   end
 
   private
-
 
   def order_params
     params.require(:order).permit(:first_name, :last_name, :address, :phone, :email)

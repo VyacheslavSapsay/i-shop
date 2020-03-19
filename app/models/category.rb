@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
   validates :title, uniqueness: true, presence: true
   has_many :product_categories

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CartItemsController < ApplicationController
   before_action :set_product, only: %i[create]
 
@@ -6,16 +8,16 @@ class CartItemsController < ApplicationController
       if current_user.cart.cart_items.find_by(product_id: @product).present?
         @cart_item = current_user.cart.cart_items.find_by(product_id: @product)
         @cart_item.update(quantity: @cart_item.quantity += 1)
-        flash[:success] = "Item added"
+        flash[:success] = 'Item added'
         redirect_back(fallback_location: root_path)
       else
         @cart_item = CartItem.create(cart_id: current_user.cart.id, product: @product, price: @product.price)
-        flash[:success] = "Item added"
+        flash[:success] = 'Item added'
         redirect_back(fallback_location: root_path)
       end
     else
       redirect_back(fallback_location: root_path)
-      flash[:danger] = "Plz Log in or registration"
+      flash[:danger] = 'Plz Log in or registration'
     end
   end
 
@@ -27,6 +29,4 @@ class CartItemsController < ApplicationController
   def set_product
     @product = Product.friendly.find params[:product_id]
   end
-
-
 end

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   before_action :current_user_exist?, except: %i[destroy]
-  def new
-  end
+  def new; end
 
   def create
     user = login(params[:email], params[:password])

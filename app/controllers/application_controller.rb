@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
-    before_action :set_locale
+  before_action :set_locale
 
   def current_user_exist?
     redirect_back(fallback_location: root_path) if current_user
@@ -27,5 +29,4 @@ class ApplicationController < ActionController::Base
       @cart.save
     end
   end
-
 end

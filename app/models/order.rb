@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
   belongs_to :user
   validates :first_name, :last_name, :address, :phone, :email, presence: true
@@ -10,7 +12,7 @@ class Order < ApplicationRecord
   scope :completed, -> { where(status: 'completed') }
   scope :cancelled, -> { where(status: 'cancelled') }
 
-  STATUS_TYPES = ['new', 'in progress', 'completed', 'cancelled']
+  STATUS_TYPES = ['new', 'in progress', 'completed', 'cancelled'].freeze
 
   def send_confirmation
     OrderMailer.confirmation(self).deliver!
@@ -19,5 +21,4 @@ class Order < ApplicationRecord
   def send_status
     OrderMailer.status(self).deliver!
   end
-
 end

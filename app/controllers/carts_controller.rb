@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class CartsController < ApplicationController
-  
   def show
     if current_user
       @cart_items = current_user.cart.cart_items
@@ -23,5 +24,4 @@ class CartsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
 end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :correct_user, only: %i[edit update destroy new]
   before_action :set_product, only: %i[new create destroy]
-  #before_action :banned?, only: %i[new create]
+  # before_action :banned?, only: %i[new create]
 
   def correct_user
     redirect_to root_path(current_user) unless current_user
@@ -15,14 +17,14 @@ class CommentsController < ApplicationController
     if @product.comments.find_by(user_id: current_user.id)
       redirect_back(fallback_location: root_path)
     else
-    @comment = @product.comments.create(comment_params)
-    @comment.user_id = current_user.id
-        if @comment.save
-          redirect_to @product
-          flash[:success] = 'Comment was successfully created.'
-        else
-          redirect_to @product
-          flash[:danger] = @comment.errors.full_messages.first
+      @comment = @product.comments.create(comment_params)
+      @comment.user_id = current_user.id
+      if @comment.save
+        redirect_to @product
+        flash[:success] = 'Comment was successfully created.'
+      else
+        redirect_to @product
+        flash[:danger] = @comment.errors.full_messages.first
       end
     end
   end
@@ -32,7 +34,7 @@ class CommentsController < ApplicationController
     if current_user.id == @comment.user_id
       @comment.destroy
       redirect_to @product
-      flash[:warning] = "Comments deleted"
+      flash[:warning] = 'Comments deleted'
     else
       redirect_to root_path
     end
@@ -47,5 +49,4 @@ class CommentsController < ApplicationController
   def set_product
     @product = Product.friendly.find params[:product_id]
   end
-
 end
